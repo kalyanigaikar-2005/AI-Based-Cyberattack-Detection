@@ -49,7 +49,7 @@ CyberShield-AI/
 ## How to Run the Application
 
 1. Clone the repository:
-   `git clone YOUR_GITHUB_REPOSITORY_URL`
+   https://github.com/kalyanigaikar-2005/AI-Based-Cyberattack-Detection.git
 
 2. Install dependencies:
    `pip install -r requirements.txt`
