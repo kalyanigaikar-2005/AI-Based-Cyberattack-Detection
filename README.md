@@ -1,78 +1,61 @@
-# AI-Based Cyberattack Detection System
+
+# 🛡️ CyberShield AI – AI-Based Cyberattack Detection System
 
 ## Project Overview
-An AI/ML-based network traffic detection system that identifies potentially malicious network traffic using machine learning. The project uses the CIC-IDS2017 dataset and provides an interactive Streamlit dashboard for uploading CSV files and analyzing network traffic.
+CyberShield AI is a machine learning-based cyberattack detection system designed to classify known network attacks and identify potentially suspicious network traffic.
+
+The system combines supervised and unsupervised machine learning techniques to improve network traffic monitoring.
 
 ## Key Features
-- Network traffic classification into BENIGN and ATTACK.
-- Data preprocessing and exploratory data analysis.
-- Feature engineering and feature importance analysis.
-- Machine learning using Random Forest and LightGBM.
-- Interactive Streamlit dashboard for CSV-based predictions.
-- Prediction summaries, visualizations, evaluation metrics, and downloadable results.
+- Multi-class cyberattack classification using LightGBM.
+- Anomaly detection using Isolation Forest.
+- Detection of BENIGN and known attack categories.
+- Identification of potentially suspicious traffic.
+- CSV file upload for network traffic analysis.
+- Interactive Streamlit dashboard.
+- Security recommendations based on detection results.
+
+## Machine Learning Models
+1. **LightGBM:** Classifies network traffic into trained categories.
+2. **Isolation Forest:** Identifies unusual traffic patterns that may indicate suspicious activity.
 
 ## Technologies Used
 - Python
-- Pandas, NumPy
-- Matplotlib, Seaborn
+- Pandas and NumPy
 - Scikit-learn
 - LightGBM
-- Random Forest
 - Streamlit
-- Jupyter Notebook
-
-## Machine Learning Model
-The Streamlit application uses a trained LightGBM pipeline with median imputation and variance-based feature selection.
-
-A Random Forest model is also retained as an alternative model.
-
-The system performs binary classification:
-- **BENIGN (0):** Normal network traffic
-- **ATTACK (1):** Potentially malicious network traffic
+- Matplotlib and Seaborn
+- Joblib
 
 ## Dataset
-The project uses CIC-IDS2017 network traffic data containing more than 2.6 million records across multiple CSV files.
-
-The raw dataset is not included in this repository.
+The project uses network traffic data based on the CIC-IDS2017 dataset, containing approximately 2.6 million records and 78 numerical features.
 
 ## Project Structure
 ```text
-AI-Based-Cyberattack-Detection/
+CyberShield-AI/
 ├── app/
-│   └── app.py
+│   └── app_v2.py
 ├── models/
-│   └── cyberattack_lightgbm_model.joblib
+│   ├── cyberattack_multiclass_lightgbm_model.joblib
+│   └── cyberattack_isolation_forest.joblib
 ├── notebooks/
-│   ├── 01_Dataset_Analysis.ipynb
-│   ├── 02_Data_Preprocessing.ipynb
-│   ├── 03_EDA.ipynb
-│   ├── 04_Feature_Engineering.ipynb
-│   ├── 05_Model_Training.ipynb
-│   └── 05_Model_Training_Backup.ipynb
-├── cyberattack_rf_model.joblib
-├── README.md
-└── requirements.txt
+├── results/
+├── src/
+├── requirements.txt
+└── README.md
 ```
 
-## Run Locally
+## How to Run the Application
 
-1. Clone the repository.
-2. Install the required dependencies:
+1. Clone the repository:
+   `git clone YOUR_GITHUB_REPOSITORY_URL`
 
-```bash
-pip install -r requirements.txt
-```
+2. Install dependencies:
+   `pip install -r requirements.txt`
 
-3. Run the Streamlit application:
+3. Run the application:
+   `python -m streamlit run app/app_v2.py`
 
-```bash
-streamlit run app/app.py
-```
-
-4. Upload a CSV file containing the required network traffic features.
-
-## Important Limitation
-The model predicts BENIGN or ATTACK; it does not identify the exact attack family. Performance on unseen network traffic can differ from performance on training or randomly split data. Further validation and improvement are required before real-world deployment.
-
-## Author
-Kalyani Gaikar
+## Important Note
+The system is a machine learning prototype. Its predictions depend on the patterns learned during training. Anomaly alerts indicate unusual traffic and do not confirm that an attack has occurred. Performance on unseen network environments may vary.
